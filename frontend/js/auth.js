@@ -1,38 +1,35 @@
-// ===================================
-// AUTH.JS — Login Page Logic
-// ===================================
-
 document.addEventListener('DOMContentLoaded', () => {
-  lucide.createIcons();
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
 
-  document.getElementById('loginForm').addEventListener('submit', function(e) {
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const emailInput = document.getElementById('loginEmail').value;
-    const passInput = document.getElementById('loginPassword').value;
+    const emailInput = document.getElementById('loginEmail');
+    const passInput = document.getElementById('loginPassword');
     const btn = document.getElementById('loginBtn');
     const errorMsg = document.getElementById('errorMsg');
 
-    // Simulate network request
     btn.innerHTML = 'Verifying...';
-    btn.style.opacity = '0.6';
+    btn.classList.add('btnloading');
     btn.disabled = true;
-    errorMsg.style.display = 'none';
+    errorMsg.classList.remove('visible');
 
-    // Reset borders
-    document.getElementById('loginEmail').style.borderColor = '';
-    document.getElementById('loginPassword').style.borderColor = '';
+    emailInput.classList.remove('inputerror');
+    passInput.classList.remove('inputerror');
 
     setTimeout(() => {
       const foundUser = window.MOCK_DATA.users.find(
-        u => u.email === emailInput && u.password === passInput
+        u => u.email === emailInput.value && u.password === passInput.value
       );
 
       if (foundUser) {
         localStorage.setItem('userRole', foundUser.role);
         localStorage.setItem('userName', foundUser.name);
         btn.innerHTML = '✓ Success';
-        btn.style.background = 'var(--success)';
+        btn.classList.remove('btnloading');
+        btn.classList.add('btnsuccess');
 
         setTimeout(() => {
           window.location.href = 'dashboard.html';
@@ -40,11 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       } else {
         btn.innerHTML = 'Log in';
-        btn.style.opacity = '1';
+        btn.classList.remove('btnloading');
         btn.disabled = false;
-        errorMsg.style.display = 'block';
-        document.getElementById('loginEmail').style.borderColor = 'var(--danger)';
-        document.getElementById('loginPassword').style.borderColor = 'var(--danger)';
+        errorMsg.classList.add('visible');
+        emailInput.classList.add('inputerror');
+        passInput.classList.add('inputerror');
       }
     }, 600);
   });
