@@ -30,11 +30,11 @@ jobs:
       
       - name: Run PHP CodeSniffer (PSR-12)
         run: |
-          phpcs --standard=PSR12 app/ routes/ config/ --ignore=vendor/ --report=summary || true
+          phpcs --standard=PSR12 app/ routes/ config/ --ignore=vendor/ --report=summary
       
       - name: Check PHP-CS-Fixer
         run: |
-          php-cs-fixer fix --dry-run --diff app/ routes/ config/ || true
+          php-cs-fixer fix --dry-run --diff app/ routes/ config/
       
       - name: Generate Report
         if: always()

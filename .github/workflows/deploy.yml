@@ -1,8 +1,6 @@
 name: Deploy to Production
 
 on:
-  push:
-    branches: [ main ]
   workflow_run:
     workflows: ["PHP Lint Check", "MySQL Schema Validation", "Unit Tests", "Code Style Check (PSR-12)"]
     types: [completed]
@@ -11,7 +9,7 @@ on:
 jobs:
   check-prerequisites:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
     
     outputs:
       deploy: ${{ steps.check.outputs.deploy }}
