@@ -30,7 +30,7 @@ jobs:
       
       - name: Check PHP-CS-Fixer (PSR-12)
         run: |
-          php-cs-fixer fix --dry-run --diff app/ routes/ config/
+          php-cs-fixer fix --dry-run --diff --config=.php-cs-fixer.php
       
       - name: Generate Report
         if: always()
