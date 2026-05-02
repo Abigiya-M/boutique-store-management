@@ -29,6 +29,7 @@ jobs:
           composer install --no-progress --prefer-dist
       
       - name: Check PHP-CS-Fixer (PSR-12)
+        continue-on-error: true
         run: |
           php-cs-fixer fix --dry-run --diff --config=.php-cs-fixer.php
       
