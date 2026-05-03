@@ -541,7 +541,7 @@ tbody tr:hover {
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--text-primary);
+  color: var(--success);
   text-transform: uppercase;
 }
 

@@ -9,7 +9,6 @@
   z-index: 100;
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease;
-  backdrop-filter: blur(4px);
 }
 
 .navigation {
@@ -60,8 +59,8 @@
 }
 
 .navlogin {
-  background: var(--text-primary);
-  color: var(--bg-primary);
+  background: #ffffff;
+  color: #ffffff;
   padding: 0.75rem 1.75rem;
   border-radius: var(--radius-full);
   font-weight: 600;
@@ -128,7 +127,7 @@
 }
 
 .herogradient {
-  background: var(--gradientLight);
+  background: var(--gradientLight, linear-gradient(90deg, #006400, #228B22));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -188,6 +187,7 @@
   border-bottom: 1px solid var(--border);
   background: var(--bg-secondary);
   display: flex;
+  color : var(--success)
 }
 
 .marqueeinner {
@@ -464,6 +464,7 @@
   font-size: 2.5rem;
   margin-bottom: 0.75rem;
   letter-spacing: -0.02em;
+  color : var(--success)
 }
 
 .ctadesc {
