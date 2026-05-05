@@ -176,7 +176,7 @@ class Router
         if ($method === null) {
             $method = $_SERVER['REQUEST_METHOD'];
         }
-        
+
         if ($uri === null) {
             $uri = $this->getRequestUri();
         }

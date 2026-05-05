@@ -35,20 +35,25 @@ if (!function_exists('log_message')) {
 
 // Simple Logger class wrapper
 if (!class_exists('Logger')) {
-    class Logger {
-        public function info($message) {
+    class Logger
+    {
+        public function info($message)
+        {
             return log_message($message, 'info');
         }
-        
-        public function error($message) {
+
+        public function error($message)
+        {
             return log_message($message, 'error');
         }
-        
-        public function warning($message) {
+
+        public function warning($message)
+        {
             return log_message($message, 'warning');
         }
-        
-        public function debug($message) {
+
+        public function debug($message)
+        {
             return log_message($message, 'debug');
         }
     }
@@ -56,7 +61,8 @@ if (!class_exists('Logger')) {
 
 // Global logger function
 if (!function_exists('logger')) {
-    function logger() {
+    function logger()
+    {
         static $instance = null;
         if ($instance === null) {
             $instance = new Logger();
@@ -64,4 +70,3 @@ if (!function_exists('logger')) {
         return $instance;
     }
 }
-

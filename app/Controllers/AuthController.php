@@ -29,7 +29,7 @@ class AuthController extends Controller
             error_log("showHome() - Session authenticated: " . ($this->session->isAuthenticated() ? 'YES' : 'NO'));
             error_log("showHome() - Session data: " . json_encode($_SESSION));
         }
-        
+
         // If already logged in, redirect to dashboard
         if ($this->session->isAuthenticated()) {
             header('Location: /dashboard');

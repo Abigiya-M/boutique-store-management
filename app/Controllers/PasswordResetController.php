@@ -61,7 +61,7 @@ class PasswordResetController extends Controller
 
             // TODO: Send email with reset link
             // Example: EmailService::sendPasswordReset($user->email, $token);
-            
+
             logger()->info("Password reset token generated for: $email");
 
             $this->jsonResponse([
@@ -234,13 +234,13 @@ class PasswordResetController extends Controller
     {
         header('Content-Type: application/json');
         http_response_code($statusCode);
-        
+
         echo json_encode([
             'success' => false,
             'message' => $message,
             'status_code' => $statusCode
         ]);
-        
+
         exit;
     }
 
@@ -251,7 +251,7 @@ class PasswordResetController extends Controller
     {
         header('Content-Type: application/json');
         http_response_code($statusCode);
-        
+
         echo json_encode($data);
         exit;
     }

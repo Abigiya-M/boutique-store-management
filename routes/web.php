@@ -47,7 +47,7 @@ return function (Router $router) {
     $router->group(['prefix' => '/store-keeper', 'middleware' => 'auth.store_keeper'], function ($router) {
         // Coming soon...
     });
-    
+
     $router->group(['prefix' => '/seller', 'middleware' => 'auth.seller'], function ($router) {
         // Coming soon...
     });
@@ -91,7 +91,7 @@ return function (Router $router) {
     // ============================================
     // ERROR ROUTES - DISABLED (not yet implemented)
     // ============================================
-    /* 
+    /*
     $router->get('/404', 'ErrorController@notFound', 'error.404');
     $router->get('/500', 'ErrorController@serverError', 'error.500');
     */

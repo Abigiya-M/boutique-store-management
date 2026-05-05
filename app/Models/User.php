@@ -65,27 +65,27 @@ class User extends Model
     public static function create($data)
     {
         $user = new static($data);
-        
+
         // Validate email
         if (!$user->validateEmail($data['email'] ?? null)) {
             throw new \Exception('Invalid email format');
         }
-        
+
         // Check if email already exists
         if (static::findByEmail($data['email'])) {
             throw new \Exception('Email already registered');
         }
-        
+
         // Check if username already exists
         if (isset($data['username']) && static::findByUsername($data['username'])) {
             throw new \Exception('Username already taken');
         }
-        
+
         // Hash password if provided
         if (isset($data['password'])) {
             $user->setPassword($data['password']);
         }
-        
+
         $user->save();
         return $user;
     }
@@ -104,17 +104,17 @@ class User extends Model
                 throw new \Exception('Email already in use');
             }
         }
-        
+
         // Hash password if provided
         if (isset($data['password'])) {
             $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT, ['cost' => PASSWORD_HASH_COST]);
         }
-        
+
         // Update attributes
         foreach ($data as $key => $value) {
             $this->attributes[$key] = $value;
         }
-        
+
         return parent::update();
     }
 
@@ -158,7 +158,7 @@ class User extends Model
         if (strlen($password) < 8) {
             throw new \Exception('Password must be at least 8 characters');
         }
-        
+
         $this->attributes['password'] = password_hash($password, PASSWORD_BCRYPT, ['cost' => PASSWORD_HASH_COST]);
         return $this;
     }
@@ -327,7 +327,7 @@ class User extends Model
     public function verifyResetToken($token)
     {
         $hashedToken = hash('sha256', $token);
-        
+
         if ($this->attributes['reset_token'] !== $hashedToken) {
             return false;
         }
@@ -362,13 +362,13 @@ class User extends Model
     public function toApiResponse()
     {
         $data = $this->attributes;
-        
+
         // Remove sensitive fields
         unset($data['password']);
         unset($data['reset_token']);
         unset($data['login_attempts']);
         unset($data['locked_until']);
-        
+
         return $data;
     }
 }

@@ -156,7 +156,6 @@ if (!defined('ROLES')) {
     // API Configuration
     define('API_VERSION', 'v1');
     define('API_RESPONSE_FORMAT', 'json');
-    
     // CORS Configuration
     define('CORS_ENABLED', env('CORS_ENABLED', true));
     define('CORS_ORIGIN', env('CORS_ORIGIN', '*'));

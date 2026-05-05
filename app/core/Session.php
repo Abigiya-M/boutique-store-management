@@ -71,11 +71,11 @@ class Session
     public function destroy()
     {
         $_SESSION = [];
-        
+
         if (ini_get('session.use_cookies') && !headers_sent()) {
             setcookie(session_name(), '', time() - 42000, '/');
         }
-        
+
         session_destroy();
     }
 
@@ -86,9 +86,9 @@ class Session
     {
         // Preserve auth data
         $authData = $_SESSION[$this->authKey] ?? null;
-        
+
         session_regenerate_id(true);
-        
+
         // Restore auth data if it existed
         if ($authData) {
             $_SESSION[$this->authKey] = $authData;
@@ -175,7 +175,7 @@ class Session
     public function verifyCsrfToken($token)
     {
         $sessionToken = $this->getCsrfToken();
-        
+
         if (!$sessionToken || !$token) {
             return false;
         }

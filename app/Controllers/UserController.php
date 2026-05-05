@@ -53,7 +53,7 @@ class UserController extends Controller
         try {
             // Find user by email
             $user = User::findByEmail($email);
-            
+
             if (!$user) {
                 // Log failed attempt
                 logger()->info("Login failed: User not found - $email");
@@ -82,16 +82,16 @@ class UserController extends Controller
 
             // Success: Update login info and create session
             $user->updateLastLogin();
-            
+
             // Regenerate session for security
             $this->session->regenerate();
-            
+
             // Store user in session
             $this->session->setUser($user->toApiResponse());
-            
+
             // Generate CSRF token
             $csrfToken = $this->session->generateCsrfToken();
-            
+
             logger()->info("Login successful - {$user->email}");
 
             $this->jsonResponse([
@@ -195,10 +195,10 @@ class UserController extends Controller
 
         try {
             $userData = $this->session->getUser();
-            
+
             // Refresh from database to get latest data
             $user = User::findById($userData['id']);
-            
+
             if (!$user) {
                 $this->session->clearUser();
                 $this->jsonError('User not found', 404);
@@ -237,13 +237,13 @@ class UserController extends Controller
     {
         header('Content-Type: application/json');
         http_response_code($statusCode);
-        
+
         echo json_encode([
             'success' => false,
             'message' => $message,
             'status_code' => $statusCode
         ]);
-        
+
         exit;
     }
 
@@ -254,7 +254,7 @@ class UserController extends Controller
     {
         header('Content-Type: application/json');
         http_response_code($statusCode);
-        
+
         echo json_encode($data);
         exit;
     }
