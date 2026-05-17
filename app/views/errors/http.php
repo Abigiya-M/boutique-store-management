@@ -116,23 +116,23 @@
                     503 => '🛠️',
                     default => '❌'
                 };
-echo $icon;
-?>
+                echo $icon;
+                ?>
         </div>
         
         <div class="error-code"><?php echo $code ?? 500; ?></div>
         
         <h1 class="error-title">
             <?php
-echo match ($code ?? 500) {
-    404 => 'Page Not Found',
-    403 => 'Access Forbidden',
-    401 => 'Unauthorized',
-    500 => 'Internal Server Error',
-    503 => 'Service Unavailable',
-    default => 'Error'
-};
-?>
+            echo match ($code ?? 500) {
+                404 => 'Page Not Found',
+                403 => 'Access Forbidden',
+                401 => 'Unauthorized',
+                500 => 'Internal Server Error',
+                503 => 'Service Unavailable',
+                default => 'Error'
+            };
+            ?>
         </h1>
         
         <p class="error-message">
