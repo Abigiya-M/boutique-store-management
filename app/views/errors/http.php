@@ -116,8 +116,8 @@
                     503 => '🛠️',
                     default => '❌'
                 };
-                echo $icon;
-                ?>
+echo $icon;
+?>
         </div>
         
         <div class="error-code"><?php echo $code ?? 500; ?></div>
@@ -132,7 +132,7 @@
                 503 => 'Service Unavailable',
                 default => 'Error'
             };
-            ?>
+?>
         </h1>
         
         <p class="error-message">
