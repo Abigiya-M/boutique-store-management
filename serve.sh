@@ -48,5 +48,5 @@ echo "Starting Boutique Store Management System..."
 echo "Server will be available externally at: http://0.0.0.0:8000"
 echo "Press Ctrl+C to stop the server"
 echo ""
+php -S localhost:8000 -t public public/router.php
 
-php -S 0.0.0.0:8000 -t public public/router.php
